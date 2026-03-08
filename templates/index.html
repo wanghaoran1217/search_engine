@@ -1,0 +1,144 @@
+
+{% extends "base.html" %}
+{% block title %}智慧搜索 - 专业资源搜索引擎{% endblock %}
+
+{% block content %}
+<!-- 搜索区域 -->
+<section class="max-w-3xl mx-auto text-center py-12">
+    <div class="flex items-center justify-center space-x-2 mb-6">
+        <i class="fa fa-search text-primary text-4xl"></i>
+        <span class="text-4xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">智慧搜索</span>
+    </div>
+    <div class="relative">
+        <form action="{{ url_for('search') }}" method="get">
+            <input type="text" name="q" placeholder="搜索网页、图片、新闻..." 
+                class="w-full px-6 py-3 rounded-full border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary text-lg transition-all">
+            <button type="submit" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-primary transition-colors">
+                <i class="fa fa-search text-xl"></i>
+            </button>
+        </form>
+    </div>
+    <div class="flex justify-center mt-4 space-x-4">
+        <button class="px-4 py-2 text-sm bg-white hover:bg-gray-50 border border-gray-200 rounded-lg transition-colors">
+            <i class="fa fa-globe mr-1"></i> 网页
+        </button>
+        <button class="px-4 py-2 text-sm bg-white hover:bg-gray-50 border border-gray-200 rounded-lg transition-colors">
+            <i class="fa fa-image mr-1"></i> 图片
+        </button>
+        <button class="px-4 py-2 text-sm bg-white hover:bg-gray-50 border border-gray-200 rounded-lg transition-colors">
+            <i class="fa fa-newspaper-o mr-1"></i> 新闻
+        </button>
+    </div>
+</section>
+
+<!-- 首页内容 -->
+<section>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        <div class="bg-white rounded-xl shadow-sm p-6 card-hover">
+            <h3 class="text-xl font-bold mb-4 flex items-center">
+                <i class="fa fa-line-chart text-primary mr-2"></i> 高级搜索技术
+            </h3>
+            <p class="text-gray-700 mb-4">
+                我们的搜索引擎采用向量空间模型，结合链接分析结果对查询结果进行排序，确保搜索结果的高质量和相关性。
+            </p>
+            <ul class="space-y-2 text-gray-600">
+                <li class="flex items-start">
+                    <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
+                    <span>基于TF-IDF的关键词匹配</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
+                    <span>PageRank链接分析算法</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
+                    <span>多索引域支持（标题、URL、锚文本等）</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="bg-white rounded-xl shadow-sm p-6 card-hover">
+            <h3 class="text-xl font-bold mb-4 flex items-center">
+                <i class="fa fa-database text-primary mr-2"></i> 海量资源库
+            </h3>
+            <p class="text-gray-700 mb-4">
+                我们的索引包含超过十万个真实网页资源，覆盖各种领域，为您提供全面的信息检索服务。
+            </p>
+            <ul class="space-y-2 text-gray-600">
+                <li class="flex items-start">
+                    <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
+                    <span>十万级网页资源库</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
+                    <span>每日自动更新内容</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fa fa-check-circle text-primary mt-1 mr-2"></i>
+                    <span>多领域内容覆盖</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm p-6 mb-10 card-hover">
+        <h3 class="text-xl font-bold mb-4 flex items-center">
+            <i class="fa fa-lightbulb-o text-primary mr-2"></i> 搜索技巧
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+                <h4 class="font-semibold mb-2 text-gray-800">使用双引号</h4>
+                <p class="text-gray-600">搜索精确短语，例如："人工智能"</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-2 text-gray-800">使用减号排除</h4>
+                <p class="text-gray-600">排除特定关键词，例如：python -教程</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-2 text-gray-800">使用OR连接</h4>
+                <p class="text-gray-600">搜索多个关键词中的任意一个，例如：苹果 OR 香蕉</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bg-white rounded-xl shadow-sm p-6 card-hover">
+        <h3 class="text-xl font-bold mb-4 flex items-center">
+            <i class="fa fa-bar-chart text-primary mr-2"></i> 热门搜索
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <a href="{{ url_for('search', q='Python教程') }}" class="flex items-center p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
+                <span class="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 font-bold">1</span>
+                <span>Python教程</span>
+            </a>
+            <a href="{{ url_for('search', q='人工智能入门') }}" class="flex items-center p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
+                <span class="bg-primary/90 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 font-bold">2</span>
+                <span>人工智能入门</span>
+            </a>
+            <a href="{{ url_for('search', q='机器学习实战') }}" class="flex items-center p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
+                <span class="bg-primary/80 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 font-bold">3</span>
+                <span>机器学习实战</span>
+            </a>
+            <a href="{{ url_for('search', q='数据结构与算法') }}" class="flex items-center p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
+                <span class="bg-primary/70 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 font-bold">4</span>
+                <span>数据结构与算法</span>
+            </a>
+            <a href="{{ url_for('search', q='Web开发技术') }}" class="flex items-center p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
+                <span class="bg-primary/60 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 font-bold">5</span>
+                <span>Web开发技术</span>
+            </a>
+            <a href="{{ url_for('search', q='大数据分析') }}" class="flex items-center p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
+                <span class="bg-primary/50 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 font-bold">6</span>
+                <span>大数据分析</span>
+            </a>
+            <a href="{{ url_for('search', q='区块链技术') }}" class="flex items-center p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
+                <span class="bg-primary/40 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 font-bold">7</span>
+                <span>区块链技术</span>
+            </a>
+            <a href="{{ url_for('search', q='云计算基础') }}" class="flex items-center p-3 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors">
+                <span class="bg-primary/30 text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 font-bold">8</span>
+                <span>云计算基础</span>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}    

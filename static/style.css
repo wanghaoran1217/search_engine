@@ -1,0 +1,61 @@
+/* 全局样式 */
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* 搜索框动画 */
+.search-container {
+    transition: all 0.3s ease;
+}
+
+.search-container:focus-within {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* 卡片悬停效果 */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* 平滑滚动 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 加载动画 */
+.loader {
+    border-top-color: #165DFF;
+    animation: spinner 0.6s linear infinite;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* 渐变文本 */
+.gradient-text {
+    background: linear-gradient(135deg, #165DFF 0%, #36CFC9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 导航栏滚动效果 */
+.navbar-scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* 响应式布局辅助类 */
+@media (max-width: 768px) {
+    .mobile-hidden {
+        display: none;
+    }
+}    
